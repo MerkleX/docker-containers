@@ -1,7 +1,7 @@
 FROM ubuntu:bionic
 
 RUN apt-get update && \
-  apt-get install -y build-essential cmake git wget && \
+  apt-get install -y build-essential cmake git wget unzip && \
   rm -rf /var/lib/apt/lists/*
 
 RUN wget https://github.com/DigitalInBlue/Celero/archive/v2.3.0.zip
