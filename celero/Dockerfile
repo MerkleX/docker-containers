@@ -8,5 +8,6 @@ RUN wget https://github.com/DigitalInBlue/Celero/archive/v2.3.0.zip
 RUN unzip v2.3.0.zip && \
   cd Celero-2.3.0 && \
   mkdir -p build && \
+  cd build && \
   cmake .. && \
   make install
