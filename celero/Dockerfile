@@ -1,8 +1,7 @@
-FROM ubuntu:bionic
+FROM ubuntu:18.04
 
 RUN apt-get update && \
-  apt-get install -y build-essential cmake git wget unzip libncurses5-dev && \
-  rm -rf /var/lib/apt/lists/*
+  apt-get install -y build-essential cmake git wget unzip libncurses5-dev
 
 RUN wget https://github.com/DigitalInBlue/Celero/archive/v2.3.0.zip
 RUN unzip v2.3.0.zip && \
@@ -10,4 +9,10 @@ RUN unzip v2.3.0.zip && \
   mkdir -p build && \
   cd build && \
   cmake .. && \
-  make install
+  make install && \
+  cd / && \
+  rm -rf Celero-2.3.0
+
+RUN apt-get remove -y build-essential cmake git wget unzip libncurses5-dev && \
+  apt-get autoremove -y && \
+  rm -rf /var/lib/apt/lists/*
