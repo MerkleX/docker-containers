@@ -19,10 +19,10 @@ FROM merklex/java8-jdk
 COPY --from=0 /geth /usr/local/bin/
 
 RUN apt-get update && \
-    apt-get install -y curl software-properties-common && \
-    add-apt-repository -y ppa:ethereum/ethereum && \
-    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    apt-get install -y nodejs solc && \
-    rm -rf /var/lib/apt/lists/* && \
-    npm install -g ganache-cli && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y curl software-properties-common git && \
+    add-apt-repository -y ppa:ethereum/ethereum
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+
+RUN apt-get install -y nodejs solc
+RUN rm -rf /var/lib/apt/lists/*
+RUN npm install ganache-cli
